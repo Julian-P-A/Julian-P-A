@@ -84,7 +84,7 @@
 💡 Creative problem solver  
 🧪 Always experimenting and building new ideas  
 
-![Coding GIF](https://tenor.com/view/gaming-day-binge-mess-video-games-regular-show-gif-16008575)
+![Coding GIF](https://media1.tenor.com/m/fDn0SCrvOiAAAAAC/gaming-day-binge.gif)
 
 ---
 
