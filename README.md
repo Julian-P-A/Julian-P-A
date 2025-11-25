@@ -21,12 +21,10 @@
 ---
 
 ## 🧠 What I Offer
-- Frontend development (React, TypeScript, Astro, JavaScript)  
+- Frontend development (Astro, JavaScript)  
 - UI/UX design, prototyping, design systems  
-- Branding and interface design  
-- Landing pages and websites optimized for SEO and conversions  
-- Web projects from concept to deployment  
-- Ability to collaborate with devs, designers, and product teams  
+- Branding 
+- Landing pages and websites with Wordpress   
 
 ---
 
