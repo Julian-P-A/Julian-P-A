@@ -11,30 +11,30 @@
 ---
 
 ## ⚡ Highlights
-- 🎨 Experience in UI/UX and frontend design  
-- 🚀 Professional work in web development for brands and agencies  
-- 🧠 Self-taught mindset, always learning  
-- 💼 Skilled in problem solving and delivering faster solutions  
-- 🎯 Focused on clean code, maintainability and good practices  
-- 🔥 Strong creativity backed by visual design experience  
+🎨 Experience in UI/UX and frontend design  
+🚀 Professional work in web development for brands and agencies  
+🧠 Self-taught mindset, always learning  
+💼 Skilled in problem solving and delivering faster solutions  
+🎯 Focused on clean code, maintainability and good practices  
+🔥 Strong creativity backed by visual design experience  
 
 ---
 
 ## 🧠 What I Offer
-- Frontend development (Astro, JavaScript)  
-- UI/UX design, prototyping, design systems  
-- Branding 
-- Landing pages and websites with Wordpress   
+Frontend development (Astro, JavaScript)  
+UI/UX design, prototyping, design systems  
+Branding 
+Landing pages and websites with Wordpress   
 
 ---
 
 ## 📚 Tech I Want to Learn Next
-- Kubernetes  
-- CI/CD advanced pipelines  
-- Microservices scaling  
-- Advanced web animations (Framer Motion / GSAP / WebGL)  
-- Testing frameworks (Jest, Cypress)  
-- Server-side rendering & performance patterns  
+Kubernetes  
+CI/CD advanced pipelines  
+Microservices scaling  
+Advanced web animations (Framer Motion / GSAP / WebGL)  
+Testing frameworks (Jest, Cypress)  
+Server-side rendering & performance patterns  
 
 ---
 
