@@ -84,8 +84,6 @@
 💡 Creative problem solver  
 🧪 Always experimenting and building new ideas  
 
-![Coding GIF](https://media1.tenor.com/m/fDn0SCrvOiAAAAAC/gaming-day-binge.gif)
-
 ---
 
 [![](https://visitcount.itsvg.in/api?id=Julian-P-A&icon=0&color=0)](https://visitcount.itsvg.in)
