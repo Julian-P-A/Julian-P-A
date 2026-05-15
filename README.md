@@ -1,34 +1,33 @@
 <!-- Banner -->
 ![Banner](https://github.com/Julian-P-A/Julian-P-A/blob/main/Banner-Behance%20(2).png?raw=true)
 
-# 💫 About Me:
-🔭 I’m currently working on: Web development projects focused on UI/UX and frontend experiences  
-🤝 I’m looking to collaborate on: Open-source projects, web apps, and creative digital products  
-🆘 I’m looking for help with: Scaling backend services and deployment workflows  
-🌱 I’m currently learning: React, Docker, and Node.js  
-💬 Ask me about: Frontend development, UI design, Ultimate, Soccer or FPS VideoGames  
+# About Me:
+I’m currently working on: Web development projects focused on UI/UX and frontend experiences  
+I’m looking to collaborate on: Open-source projects, web apps, and creative digital products  
+I’m looking for help with: Scaling backend services and deployment workflows  
+I’m currently learning: React, Docker, and Node.js  
 
 ---
 
-## ⚡ Highlights
-🎨 Experience in UI/UX and frontend design  
-🚀 Professional work in web development for brands and agencies  
-🧠 Self-taught mindset, always learning  
-💼 Skilled in problem solving and delivering faster solutions  
-🎯 Focused on clean code, maintainability and good practices  
-🔥 Strong creativity backed by visual design experience  
+## Highlights
+Experience in UI/UX and frontend design  
+Professional work in web development for brands and agencies  
+Self-taught mindset, always learning  
+Skilled in problem solving and delivering faster solutions  
+Focused on clean code, maintainability and good practices  
+Strong creativity backed by visual design experience  
 
 ---
 
-## 🧠 What I Offer
-Frontend development (Astro, JavaScript)  
+## What I Offer
+Frontend development  
 UI/UX design, prototyping, design systems  
 Branding 
 Landing pages and websites with Wordpress   
 
 ---
 
-## 📚 Tech I Want to Learn Next
+## Tech I Want to Learn Next
 Kubernetes  
 CI/CD advanced pipelines  
 Microservices scaling  
@@ -38,7 +37,7 @@ Server-side rendering & performance patterns
 
 ---
 
-## 🌐 Socials:
+## Socials:
 [![Behance](https://img.shields.io/badge/Behance-1769ff?logo=behance&logoColor=white)](https://behance.net/julianariza3)  
 [![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.com/users/302319395626156032)  
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/julian.c.ariz)  
@@ -48,7 +47,7 @@ Server-side rendering & performance patterns
 
 ---
 
-# 💻 Tech Stack:
+# Tech Stack:
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) 
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) 
@@ -78,11 +77,11 @@ Server-side rendering & performance patterns
 
 ---
 
-## 🎮 A little more about me
-🔥 Ultimate & soccer player  
-🎮 FPS & competitive video game enthusiast  
-💡 Creative problem solver  
-🧪 Always experimenting and building new ideas  
+## A little more about me
+Ultimate & soccer player  
+FPS & competitive video game enthusiast  
+Creative problem solver  
+Always experimenting and building new ideas  
 
 ---
 
