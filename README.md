@@ -1,5 +1,5 @@
 <!-- Banner -->
-![Banner]([https://github.com/Julian-P-A/Julian-P-A/blob/main/Banner-Linkedin.png?raw=true](https://github.com/Julian-P-A/Julian-P-A/blob/main/Banner-Behance%20(2).png?raw=true))
+![Banner](https://github.com/Julian-P-A/Julian-P-A/blob/main/Banner-Linkedin.png?raw=true)
 
 # 💫 About Me:
 🔭 I’m currently working on: Web development projects focused on UI/UX and frontend experiences  
