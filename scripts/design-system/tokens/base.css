@@ -1,0 +1,14 @@
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--surface-page);color:var(--text-body);font:var(--type-body)}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--text-strong);letter-spacing:var(--tracking-snug);margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:var(--text-strong);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:.2em;transition:color var(--dur-fast) var(--ease-snap)}
+a:hover{color:var(--accent)}
+::selection{background:var(--lime-400);color:var(--ink-900)}
+.ds-tag-icon svg{width:100%;height:100%;display:block}
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+@keyframes ds-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes ds-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes ds-spin{to{transform:rotate(360deg)}}
+@keyframes ds-pulse{0%,100%{opacity:1}50%{opacity:.35}}

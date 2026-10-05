@@ -1,90 +1,170 @@
-<!-- Banner -->
-![Banner](https://github.com/Julian-P-A/Julian-P-A/blob/main/Banner-Behance%20(2).png?raw=true)
+<!--
+  Perfil de Julian Camilo Pinzón Ariza.
+  Todos los paneles, incluida la actividad, son capturas reales del sistema
+  de diseño (scripts/design-system: los tokens y componentes compilados
+  reales — SectionHeader, Badge, Tag, Marquee, IconButton — no una
+  recreación aproximada). Para regenerarlos: editar scripts/render-content.mjs
+  y correr `npm run build:assets` (trae los íconos del stack con devicon.dev,
+  escribe scripts/design-system/render/*.html y los captura con Puppeteer a
+  assets/*.png). El panel de actividad además se regenera solo cada día con
+  `npm run build:contributions`, disparado por .github/workflows/contributions.yml.
 
-# About Me:
-I’m currently working on: Web development projects focused on UI/UX and frontend experiences  
-I’m looking to collaborate on: Open-source projects, web apps, and creative digital products  
-I’m looking for help with: Scaling backend services and deployment workflows  
-I’m currently learning: React, Docker, and Node.js  
+  Los paneles hero y contact son la excepción: cada uno se parte en dos
+  imágenes pegadas sin espacio (mismo <p>, sin salto de línea entre los
+  <img>) — un PNG estático arriba y, abajo, un hero-marquee.svg /
+  contact-marquee.svg con la cinta real en movimiento. Un <img src="*.svg">
+  sigue siendo un documento SVG vivo aunque GitHub no ejecute JS/CSS en el
+  README en sí: sus propios @keyframes sí corren, así que esa cinta se
+  mueve de verdad — sin capturas, sin GIF pesado, texto nítido a cualquier
+  tamaño. No es una captura del DOM: scripts/lib/marquee-svg.mjs arma el
+  SVG a mano (texto real con textLength para que el loop calce exacto) a
+  partir de scripts/render-content.mjs; capture.mjs solo mide con Puppeteer
+  el alto real que ocupa la cinta para que el corte con el PNG de arriba
+  quede exacto.
+
+  Los íconos de contacto de abajo (assets/social/*.svg) son la otra parte
+  del README que NO es una captura: son SVGs reales dentro de <a href> de
+  verdad, así que sí son clicables en GitHub. Se regeneran con
+  `npm run fetch:social-icons` (scripts/social-links.mjs es la fuente de
+  verdad de los links).
+-->
+
+<p align="center"><img src="assets/hero.png" width="100%" alt="Julian Camilo Pinzón Ariza, Frontend Developer y UX/UI Designer, disponible y trabajando remoto desde Colombia. Diseño interfaces y las construyo."><img src="assets/hero-marquee.svg" width="100%" alt="Cinta animada: Diseño UX/UI, Front-end, Design systems, Prototipado, Motion."></p>
+
+<p align="center">
+  <img src="assets/about.png" width="100%" alt="Sobre mí: actualmente trabajo en proyectos de desarrollo web enfocados en UI/UX y experiencias frontend. Busco colaborar en proyectos open-source, web apps y productos digitales creativos. Estoy aprendiendo React, Docker y Node.js, y busco ayuda escalando servicios backend y flujos de despliegue.">
+</p>
+
+<p align="center">
+  <img src="assets/offer.png" width="100%" alt="Qué ofrezco: frontend development, UI/UX design, prototyping, design systems, branding y landing pages con WordPress. Experiencia en UI/UX y frontend para marcas y agencias, mentalidad autodidacta, código limpio y mantenible.">
+</p>
+
+<p align="center">
+  <img src="assets/principles.png" width="100%" alt="Cómo trabajo. 01, resolver problemas rápido sin atajos que cobren factura después. 02, código limpio y mantenible que se nota a los 6 meses, no en el demo. 03, autodidacta por naturaleza: si no sé algo, lo aprendo en el camino.">
+</p>
+
+<p align="center">
+  <img src="assets/stack.png" width="100%" alt="Herramientas: HTML, CSS, JavaScript, TypeScript, React, Astro, Tailwind CSS, WordPress, Java, C, MySQL, Figma, Adobe XD, Illustrator, Photoshop, Git, GitHub, Docker, NPM, Postman, Swagger y Notion.">
+</p>
+
+<p align="center">
+  <img src="assets/changelog.png" width="100%" alt="Changelog: versión actual, frontend y UX/UI, proyectos para marcas y agencias, diseño de sistemas. Siguiente versión en progreso: Kubernetes, CI/CD avanzado, microservicios, animaciones con Framer Motion y GSAP, testing con Jest y Cypress, y server-side rendering.">
+</p>
+
+<p align="center">
+  <img src="assets/contributions.png" width="100%" alt="Lo que he estado haciendo: actividad en GitHub de los últimos 12 meses. Se actualiza a diario.">
+</p>
+
+<p align="center"><img src="assets/contact.png" width="100%" alt="Contacto: ¿un proyecto, una vacante o ganas de hablar de diseño y código? Escríbeme, respondo rápido."><img src="assets/contact-marquee.svg" width="100%" alt="Cinta animada: Hablemos."></p>
+
+<p align="center">
+  <a href="mailto:julian.jcpa@gmail.com"><img src="assets/social/mail.svg" height="40" alt="Escribir a julian.jcpa@gmail.com"></a>
+  &nbsp;
+  <a href="https://linkedin.com/in/Julianjcpa"><img src="assets/social/linkedin.svg" height="40" alt="LinkedIn de Julian Camilo Pinzón Ariza"></a>
+  &nbsp;
+  <a href="https://behance.net/julianariza3"><img src="assets/social/behance.svg" height="40" alt="Behance de Julian"></a>
+  &nbsp;
+  <a href="https://instagram.com/julian.c.ariz"><img src="assets/social/instagram.svg" height="40" alt="Instagram @julian.c.ariz"></a>
+  &nbsp;
+  <a href="https://x.com/Julian_c_ariz"><img src="assets/social/x.svg" height="40" alt="X (Twitter) de Julian"></a>
+  &nbsp;
+  <a href="https://discord.com/users/302319395626156032"><img src="assets/social/discord.svg" height="40" alt="Discord de Julian: julian.c.ariz"></a>
+</p>
+
+<!-- texto:inicio -->
+<details>
+<summary><strong>Versión en texto / English version</strong> · <code>README --no-images</code></summary>
+<br>
+
+```ts
+// julian.config.ts
+export const julian = {
+  nombre: 'Julian Camilo Pinzón Ariza',
+  rol: ['Frontend Developer', 'UX/UI Designer'],
+  base: 'Colombia',
+  version: 'siempre-en-beta',
+  principio: 'que algo se vea bien y funcione bien, no una u otra cosa',
+} as const
+```
+
+#### Sobre mí
+
+- Ahora mismo: proyectos de desarrollo web enfocados en UI/UX y experiencias frontend.
+- Busco colaborar en: proyectos open-source, web apps y productos digitales creativos.
+- Busco ayuda con: escalar servicios backend y flujos de despliegue.
+- Aprendiendo: React, Docker y Node.js.
+
+#### Qué ofrezco
+
+`frontend development` · `ui/ux design` · `prototyping` · `design systems` · `branding` · `landing pages con wordpress`
+
+Experiencia en UI/UX y frontend para marcas y agencias, mentalidad autodidacta y foco constante en código limpio, mantenible y en entregar soluciones rápido.
+
+#### Cómo trabajo
+
+| | Principio | En la práctica |
+|:-:|:--|:--|
+| `01` | **Resolver rápido** | Sin atajos que cobren factura después. |
+| `02` | **Código limpio** | Mantenible — se nota a los 6 meses, no en el demo. |
+| `03` | **Autodidacta** | Si no sé algo, lo aprendo en el camino. |
+
+#### Herramientas
+
+`HTML` · `CSS` · `JavaScript` · `TypeScript` · `React` · `Astro` · `Tailwind CSS` · `WordPress` · `Java` · `C` · `MySQL` · `Figma` · `Adobe XD` · `Illustrator` · `Photoshop` · `Git` · `GitHub` · `Docker` · `NPM` · `Postman` · `Swagger` · `Notion`
+
+#### Changelog
+
+```diff
+@@ v-actual @@
++ Frontend & UX/UI
++ Proyectos para marcas y agencias
++ Diseño de sistemas
+
+@@ v-next · en progreso @@
++ Kubernetes
++ CI/CD avanzado
++ Microservicios
++ Animaciones (Framer Motion / GSAP)
++ Testing (Jest, Cypress)
++ Server-side rendering
+```
+
+#### Contacto
+
+```sh
+$ julian --contacto
+> julian.jcpa@gmail.com
+> linkedin.com/in/Julianjcpa
+> behance.net/julianariza3
+> instagram.com/julian.c.ariz
+> x.com/Julian_c_ariz
+```
+
+[**Escríbeme**](mailto:julian.jcpa@gmail.com) · [**LinkedIn**](https://linkedin.com/in/Julianjcpa) · [**Behance**](https://behance.net/julianariza3) · [**Instagram**](https://instagram.com/julian.c.ariz) · [**X**](https://x.com/Julian_c_ariz)
+
+<sub>Julian Camilo Pinzón Ariza · siempre en beta.</sub>
 
 ---
 
-## Highlights
-Experience in UI/UX and frontend design  
-Professional work in web development for brands and agencies  
-Self-taught mindset, always learning  
-Skilled in problem solving and delivering faster solutions  
-Focused on clean code, maintainability and good practices  
-Strong creativity backed by visual design experience  
+### English version
 
----
+**Julian Camilo Pinzón Ariza** — Frontend Developer & UX/UI Designer, Colombia.
+I don't like choosing between something that looks good and something that works well, so I do both: I design the interface and I build it.
 
-## What I Offer
-Frontend development  
-UI/UX design, prototyping, design systems  
-Branding 
-Landing pages and websites with Wordpress   
+**About me:** currently working on web development projects focused on UI/UX and frontend experiences. Looking to collaborate on open-source projects, web apps and creative digital products. Looking for help scaling backend services and deployment workflows. Currently learning React, Docker and Node.js.
 
----
+**What I offer:** frontend development, UI/UX design, prototyping, design systems, branding, and landing pages with WordPress. Experience in UI/UX and frontend design for brands and agencies, a self-taught mindset, and a constant focus on clean, maintainable code.
 
-## Tech I Want to Learn Next
-Kubernetes  
-CI/CD advanced pipelines  
-Microservices scaling  
-Advanced web animations (Framer Motion / GSAP / WebGL)  
-Testing frameworks (Jest, Cypress)  
-Server-side rendering & performance patterns  
+**How I work:**
+1. Solve problems fast, without shortcuts that cost more later.
+2. Clean, maintainable code — it shows at month six, not in the demo.
+3. Self-taught by nature: if I don't know something, I learn it along the way.
 
----
+**Tools:** HTML, CSS, JavaScript, TypeScript, React, Astro, Tailwind CSS, WordPress, Java, C, MySQL, Figma, Adobe XD, Illustrator, Photoshop, Git, GitHub, Docker, NPM, Postman, Swagger, Notion.
 
-## Socials:
-[![Behance](https://img.shields.io/badge/Behance-1769ff?logo=behance&logoColor=white)](https://behance.net/julianariza3)  
-[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.com/users/302319395626156032)  
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/julian.c.ariz)  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/Julianjcpa)  
-[![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://x.com/Julian_c_ariz)  
-[![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:julian.jcpa@gmail.com)  
+**Changelog:** current — frontend & UX/UI work, projects for brands and agencies, design systems. Next, in progress — Kubernetes, advanced CI/CD, microservices, animation (Framer Motion / GSAP), testing (Jest, Cypress), server-side rendering.
 
----
+**Contact:** a project, an opening, or just want to talk design and code? [Email me](mailto:julian.jcpa@gmail.com) · [LinkedIn](https://linkedin.com/in/Julianjcpa) · [Behance](https://behance.net/julianariza3) · [Instagram](https://instagram.com/julian.c.ariz) · [X](https://x.com/Julian_c_ariz)
 
-# Tech Stack:
-![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) 
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) 
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) 
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) 
-![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white) 
-![WordPress](https://img.shields.io/badge/WordPress-%23117AC9.svg?style=for-the-badge&logo=WordPress&logoColor=white) 
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) 
-![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) 
-![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) 
-![Adobe](https://img.shields.io/badge/adobe-%23FF0000.svg?style=for-the-badge&logo=adobe&logoColor=white) 
-![Adobe Illustrator](https://img.shields.io/badge/adobe%20illustrator-%23FF9A00.svg?style=for-the-badge&logo=adobe%20illustrator&logoColor=white) 
-![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white) 
-![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) 
-![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) 
-![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) 
-![Puppeteer](https://img.shields.io/badge/Puppeteer-%2340B5A4.svg?style=for-the-badge&logo=Puppeteer&logoSize=auto&logoColor=black) 
-![Steam](https://img.shields.io/badge/steam-%23000000.svg?style=for-the-badge&logo=steam&logoColor=white) 
-![Riot Games](https://img.shields.io/badge/riotgames-D32936.svg?style=for-the-badge&logo=riotgames&logoColor=white) 
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) 
-![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white) 
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) 
-![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white) 
-![Meta](https://img.shields.io/badge/Meta-%230467DF.svg?style=for-the-badge&logo=Meta&logoColor=white)
-
----
-
-## A little more about me
-Ultimate & soccer player  
-FPS & competitive video game enthusiast  
-Creative problem solver  
-Always experimenting and building new ideas  
-
----
-
-[![](https://visitcount.itsvg.in/api?id=Julian-P-A&icon=0&color=0)](https://visitcount.itsvg.in)
-
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+</details>
+<!-- texto:fin -->

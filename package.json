@@ -1,0 +1,16 @@
+{
+  "name": "julian-p-a-profile",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch:contributions": "node scripts/fetch-contributions.mjs",
+    "fetch:stack-icons": "node scripts/fetch-stack-icons.mjs",
+    "fetch:social-icons": "node scripts/fetch-social-icons.mjs",
+    "build:html": "node scripts/build-html.mjs",
+    "build:assets": "npm run fetch:stack-icons && npm run fetch:social-icons && npm run build:html && node scripts/capture.mjs",
+    "build:contributions": "npm run fetch:contributions && npm run build:html && node scripts/capture.mjs contributions"
+  },
+  "devDependencies": {
+    "puppeteer": "^25.12.0"
+  }
+}

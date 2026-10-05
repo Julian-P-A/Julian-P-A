@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236.4 40" width="236.4" height="40" role="img" aria-label="Email: julian.jcpa@gmail.com">
+<rect x="0.75" y="0.75" width="234.9" height="38.5" rx="19.3" fill="#0D0D0B" stroke="rgba(214,255,92,.4)" stroke-width="1.5"/>
+<g transform="translate(16,11.0) scale(0.7500)" fill="none" stroke="#D6FF5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect width="20" height="16" x="2" y="4" rx="2" />
+  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+</g>
+<text x="44.0" y="20" dominant-baseline="central" font-family="&quot;JetBrains Mono&quot;,ui-monospace,monospace" font-weight="500" font-size="14" fill="#FAF8F3" textLength="176.4" lengthAdjust="spacingAndGlyphs">julian.jcpa@gmail.com</text>
+</svg>
