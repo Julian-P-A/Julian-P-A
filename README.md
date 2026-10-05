@@ -1,13 +1,12 @@
 <!--
   Perfil de Julian Camilo Pinzón Ariza.
-  Todos los paneles, incluida la actividad, son capturas reales del sistema
-  de diseño (scripts/design-system: los tokens y componentes compilados
-  reales — SectionHeader, Badge, Tag, Marquee, IconButton — no una
-  recreación aproximada). Para regenerarlos: editar scripts/render-content.mjs
-  y correr `npm run build:assets` (trae los íconos del stack con devicon.dev,
+  Todos los paneles son capturas reales del sistema de diseño
+  (scripts/design-system: los tokens y componentes compilados reales —
+  SectionHeader, Badge, Tag, Marquee, IconButton — no una recreación
+  aproximada). Para regenerarlos: editar scripts/render-content.mjs y
+  correr `npm run build:assets` (trae los íconos del stack con devicon.dev,
   escribe scripts/design-system/render/*.html y los captura con Puppeteer a
-  assets/*.png). El panel de actividad además se regenera solo cada día con
-  `npm run build:contributions`, disparado por .github/workflows/contributions.yml.
+  assets/*.png).
 
   Los paneles hero y contact son la excepción: cada uno es un único
   hero.svg / contact.svg, no un PNG. Un <img src="*.svg"> sigue siendo un
@@ -50,10 +49,6 @@
 
 <p align="center">
   <img src="assets/changelog.png" width="100%" alt="Changelog: versión actual, frontend y UX/UI, proyectos para marcas y agencias, diseño de sistemas. Siguiente versión en progreso: Kubernetes, CI/CD avanzado, microservicios, animaciones con Framer Motion y GSAP, testing con Jest y Cypress, y server-side rendering.">
-</p>
-
-<p align="center">
-  <img src="assets/contributions.png" width="100%" alt="Lo que he estado haciendo: actividad en GitHub de los últimos 12 meses. Se actualiza a diario.">
 </p>
 
 <p align="center">

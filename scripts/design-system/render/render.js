@@ -77,7 +77,7 @@ function Section(C) {
     kids.push(
       e(
         "div",
-        { key: "f", style: { display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: 16, marginTop: 28, maxWidth: 820 } },
+        { key: "f", style: { display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gap: 16, marginTop: 28, maxWidth: 1040 } },
         C.features.map((f) =>
           e(
             "div",
@@ -238,46 +238,6 @@ function Contact(C) {
   );
 }
 
-function Contributions(C) {
-  const weeks = C.calendar || [];
-  const maxCount = Math.max(1, ...weeks.flatMap((w) => w.contributionDays.map((d) => d.contributionCount)));
-  const cellColor = (count) => {
-    if (count === 0) return "var(--surface-raised)";
-    const steps = [0.3, 0.55, 0.78, 1];
-    const t = Math.min(1, count / Math.max(1, maxCount * 0.6));
-    const step = steps.find((s) => t <= s) ?? 1;
-    return `color-mix(in oklch, var(--lime-400) ${step * 100}%, var(--surface-raised))`;
-  };
-  return e(
-    "section",
-    { style: { background: "var(--surface-page)", borderRadius: "var(--radius-xl)", border: outline(), padding: "64px" } },
-    e(SectionHeader, { index: C.index, eyebrow: C.eyebrow, title: lines(C.title), accent: C.accent }),
-    C.description &&
-      e(
-        "p",
-        { style: { margin: "24px 0 0", font: "500 14px/1 var(--font-mono)", color: "var(--text-muted)" } },
-        C.description
-      ),
-    e(
-      "div",
-      { style: { display: "flex", gap: 3, marginTop: 28 } },
-      weeks.map((w, wi) =>
-        e(
-          "div",
-          { key: wi, style: { display: "flex", flexDirection: "column", gap: 3 } },
-          w.contributionDays.map((d, di) =>
-            e("div", {
-              key: di,
-              title: d.date ? `${d.date}: ${d.contributionCount}` : undefined,
-              style: { width: 11, height: 11, borderRadius: 3, background: cellColor(d.contributionCount) },
-            })
-          )
-        )
-      )
-    )
-  );
-}
-
-const RENDERERS = { hero: Hero, contact: Contact, contributions: Contributions };
+const RENDERERS = { hero: Hero, contact: Contact };
 const Root = (RENDERERS[C.kind] || Section)(C);
 ReactDOM.createRoot(document.getElementById("root")).render(Root);

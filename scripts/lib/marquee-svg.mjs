@@ -131,7 +131,7 @@ export function buildPanelSvg({
   text { font-family: "Bricolage Grotesque","Helvetica Neue",Arial,sans-serif; font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; fill: ${fg}; }
   @media (prefers-reduced-motion: reduce) { .track { animation-play-state: paused; } }
 </style>
-<image x="0" y="0" width="${w}" height="${topHeight.toFixed(1)}" href="data:image/png;base64,${topImageBase64}"/>
+<image x="0" y="0" width="${w}" height="${(topHeight + 0.5).toFixed(1)}" preserveAspectRatio="none" href="data:image/png;base64,${topImageBase64}"/>
 <g transform="translate(0,${topHeight.toFixed(1)})">
   <clipPath id="clip"><path d="${clipPath}"/></clipPath>
   <g clip-path="url(#clip)">

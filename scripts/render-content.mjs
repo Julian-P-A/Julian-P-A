@@ -11,7 +11,7 @@ export const sections = [
     titleTail: "y las ",
     accent: "construyo.",
     body: "Frontend Developer & UX/UI Designer. No me gusta elegir entre que algo se vea bien o que funcione bien, así que hago las dos cosas.",
-    marquee: { items: ["Diseño UX/UI", "Front-end", "Design systems", "Prototipado", "Motion"], tilt: -2, tone: "lime", size: 36 },
+    marquee: { items: ["Diseño UX/UI", "Front-end", "Design systems", "Prototipado", "Motion", "Automate"], tilt: -2, tone: "lime", size: 36 },
     alt: "Julian Camilo Pinzón Ariza, Frontend Developer y UX/UI Designer, disponible y trabajando remoto desde Colombia. Diseño interfaces y las construyo.",
   },
   {
@@ -41,8 +41,9 @@ export const sections = [
       { icon: "layers", label: "Design systems" },
       { icon: "sparkle", label: "Branding" },
       { icon: "globe", label: "WordPress" },
+      { icon: "workflow", label: "Automatizaciones" },
     ],
-    alt: "Qué ofrezco: frontend development, UI/UX design, prototyping, design systems, branding y landing pages con WordPress. Experiencia en UI/UX y frontend para marcas y agencias, mentalidad autodidacta, código limpio y mantenible.",
+    alt: "Qué ofrezco: frontend development, UI/UX design, prototyping, design systems, branding, landing pages con WordPress y automatizaciones. Experiencia en UI/UX y frontend para marcas y agencias, mentalidad autodidacta, código limpio y mantenible.",
   },
   {
     id: "principles",
@@ -111,10 +112,13 @@ export const sections = [
           { id: "postman", label: "postman", icon: "postman/postman-original" },
           { id: "swagger", label: "swagger", icon: "swagger/swagger-original" },
           { id: "notion", label: "notion", icon: "notion/notion-original" },
+          { id: "playwright", label: "playwright", icon: "playwright/playwright-original" },
+          // Not in devicon's catalog — simple-icons has it instead.
+          { id: "n8n", label: "n8n", icon: "n8n", iconSource: "simple-icons" },
         ],
       },
     ],
-    alt: "Herramientas por categoría. Frontend: HTML, CSS, JavaScript, TypeScript, React, Next.js, Vite, Astro, Tailwind CSS, WordPress. Backend: Java, C, MySQL. Diseño: Figma, Adobe XD, Illustrator, Photoshop. Herramientas: Git, GitHub, Docker, NPM, Postman, Swagger, Notion.",
+    alt: "Herramientas por categoría. Frontend: HTML, CSS, JavaScript, TypeScript, React, Next.js, Vite, Astro, Tailwind CSS, WordPress. Backend: Java, C, MySQL. Diseño: Figma, Adobe XD, Illustrator, Photoshop. Herramientas: Git, GitHub, Docker, NPM, Postman, Swagger, Notion, Playwright, n8n.",
   },
   {
     id: "changelog",
@@ -130,21 +134,9 @@ export const sections = [
     alt: "Changelog: versión actual, frontend y UX/UI, proyectos para marcas y agencias, diseño de sistemas. Siguiente versión en progreso: Kubernetes, CI/CD avanzado, microservicios, animaciones con Framer Motion y GSAP, testing con Jest y Cypress, y server-side rendering.",
   },
   {
-    id: "contributions",
-    kind: "contributions",
-    index: "06",
-    eyebrow: "Actividad",
-    title: "Lo que he\nestado ",
-    accent: "haciendo.",
-    // `calendar` and `description` are filled in by build-html.mjs from
-    // scripts/design-system/render/contributions-data.json (written by
-    // fetch-contributions.mjs) — real GitHub data, not a placeholder.
-    alt: "Actividad en GitHub de los últimos 12 meses. Se actualiza a diario.",
-  },
-  {
     id: "contact",
     kind: "contact",
-    eyebrow: "(07) Contacto",
+    eyebrow: "(06) Contacto",
     title: "¿Seguimos",
     accent: "hablando",
     tail: "?",

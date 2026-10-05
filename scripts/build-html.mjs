@@ -10,7 +10,6 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { sections } from "./render-content.mjs";
 
 const OUT_DIR = new URL("design-system/render/", import.meta.url);
-const CONTRIB_DATA = new URL("design-system/render/contributions-data.json", import.meta.url);
 const STACK_ICONS = new URL("design-system/render/stack-icons.json", import.meta.url);
 
 async function withStackIcons(section) {
@@ -26,28 +25,6 @@ async function withStackIcons(section) {
       "No stack-icons.json found — run `node scripts/fetch-stack-icons.mjs` first. Tags will render without icons."
     );
     return section;
-  }
-}
-
-async function withContributionsData(section) {
-  if (section.id !== "contributions") return section;
-  try {
-    const cal = JSON.parse(await readFile(CONTRIB_DATA, "utf8"));
-    return {
-      ...section,
-      calendar: cal.weeks,
-      description: cal.live
-        ? `${cal.totalContributions} contribuciones en los últimos 12 meses.`
-        : "Se actualiza a diario vía GitHub Actions.",
-    };
-  } catch {
-    console.warn(
-      "No contributions-data.json found — run `node scripts/fetch-contributions.mjs` first. Writing an empty grid."
-    );
-    const weeks = Array.from({ length: 53 }, () => ({
-      contributionDays: Array.from({ length: 7 }, (_, weekday) => ({ date: "", contributionCount: 0, weekday })),
-    }));
-    return { ...section, calendar: weeks, description: "Se actualiza a diario vía GitHub Actions." };
   }
 }
 
@@ -71,7 +48,7 @@ function page(section) {
 async function main() {
   await mkdir(OUT_DIR, { recursive: true });
   for (const raw of sections) {
-    const section = await withStackIcons(await withContributionsData(raw));
+    const section = await withStackIcons(raw);
     await writeFile(new URL(`${section.id}.html`, OUT_DIR), page(section), "utf8");
     console.log(`wrote scripts/design-system/render/${section.id}.html`);
   }

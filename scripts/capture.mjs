@@ -23,8 +23,7 @@ const RENDER_DIR = new URL("design-system/render/", import.meta.url);
 const ASSETS_DIR = new URL("../assets/", import.meta.url);
 
 // Optional: `node scripts/capture.mjs hero contact` captures just those
-// ids (used by the daily workflow to refresh only the contributions panel
-// instead of re-rendering everything).
+// ids instead of re-rendering everything.
 const only = process.argv.slice(2);
 const targets = only.length ? sections.filter((s) => only.includes(s.id)) : sections;
 
