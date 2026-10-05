@@ -70,10 +70,15 @@ async function captureMarqueePanel(page, id, marquee) {
   const splitY = marqueeBox.y - Math.abs(sectionBox.width * Math.sin((tiltDeg * Math.PI) / 180)) - 6;
 
   // Static top: everything above the ribbon, including the card's own
-  // background/border and top rounded corners.
+  // background/border and top rounded corners. omitBackground: without it
+  // Puppeteer paints the page's "transparent" CSS background as opaque
+  // white, so the four corners outside the card's border-radius (the PNG
+  // is always a rectangle) show up as white squares — invisible on
+  // GitHub's light theme, glaring on dark.
   await page.screenshot({
     path: new URL(`${id}.png`, ASSETS_DIR).pathname,
     clip: { x: sectionBox.x, y: sectionBox.y, width: sectionBox.width, height: splitY - sectionBox.y },
+    omitBackground: true,
   });
 
   const stripHeight = sectionBox.y + sectionBox.height - splitY;
@@ -114,7 +119,9 @@ async function main() {
       } else {
         const root = await page.$("#root");
         const outPath = new URL(`${s.id}.png`, ASSETS_DIR).pathname;
-        await root.screenshot({ path: outPath });
+        // omitBackground: see the comment in captureMarqueePanel — without
+        // it the card's rounded corners get opaque white squares behind them.
+        await root.screenshot({ path: outPath, omitBackground: true });
         console.log(`wrote assets/${s.id}.png`);
       }
       await page.close();
