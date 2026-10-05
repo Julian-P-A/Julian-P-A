@@ -9,18 +9,17 @@
   assets/*.png). El panel de actividad además se regenera solo cada día con
   `npm run build:contributions`, disparado por .github/workflows/contributions.yml.
 
-  Los paneles hero y contact son la excepción: cada uno se parte en dos
-  imágenes pegadas sin espacio (mismo <p>, sin salto de línea entre los
-  <img>) — un PNG estático arriba y, abajo, un hero-marquee.svg /
-  contact-marquee.svg con la cinta real en movimiento. Un <img src="*.svg">
-  sigue siendo un documento SVG vivo aunque GitHub no ejecute JS/CSS en el
-  README en sí: sus propios @keyframes sí corren, así que esa cinta se
-  mueve de verdad — sin capturas, sin GIF pesado, texto nítido a cualquier
-  tamaño. No es una captura del DOM: scripts/lib/marquee-svg.mjs arma el
-  SVG a mano (texto real con textLength para que el loop calce exacto) a
-  partir de scripts/render-content.mjs; capture.mjs solo mide con Puppeteer
-  el alto real que ocupa la cinta para que el corte con el PNG de arriba
-  quede exacto.
+  Los paneles hero y contact son la excepción: cada uno es un único
+  hero.svg / contact.svg, no un PNG. Un <img src="*.svg"> sigue siendo un
+  documento SVG vivo aunque GitHub no ejecute JS/CSS en el README en sí:
+  sus propios @keyframes sí corren, así que la cinta inferior se mueve de
+  verdad — sin capturas, sin GIF pesado, texto nítido a cualquier tamaño.
+  El contenido de arriba (titular, texto) sigue siendo la captura real de
+  Puppeteer de siempre — scripts/capture.mjs la toma como PNG en memoria y
+  la embebe como <image> base64 dentro del propio SVG — y la cinta de abajo
+  es texto SVG real armado a mano por scripts/lib/marquee-svg.mjs (con
+  textLength para que el loop calce exacto), todo en un solo archivo, sin
+  costura entre dos imágenes separadas que mantener alineadas.
 
   Los íconos de contacto de abajo (assets/social/*.svg) son la otra parte
   del README que NO es una captura: son SVGs reales dentro de <a href> de
@@ -29,7 +28,9 @@
   verdad de los links).
 -->
 
-<p align="center"><img src="assets/hero.png" width="100%" alt="Julian Camilo Pinzón Ariza, Frontend Developer y UX/UI Designer, disponible y trabajando remoto desde Colombia. Diseño interfaces y las construyo."><img src="assets/hero-marquee.svg" width="100%" alt="Cinta animada: Diseño UX/UI, Front-end, Design systems, Prototipado, Motion."></p>
+<p align="center">
+  <img src="assets/hero.svg" width="100%" alt="Julian Camilo Pinzón Ariza, Frontend Developer y UX/UI Designer, disponible y trabajando remoto desde Colombia. Diseño interfaces y las construyo. Cinta animada: Diseño UX/UI, Front-end, Design systems, Prototipado, Motion.">
+</p>
 
 <p align="center">
   <img src="assets/about.png" width="100%" alt="Sobre mí: actualmente trabajo en proyectos de desarrollo web enfocados en UI/UX y experiencias frontend. Busco colaborar en proyectos open-source, web apps y productos digitales creativos. Estoy aprendiendo React, Docker y Node.js, y busco ayuda escalando servicios backend y flujos de despliegue.">
@@ -55,7 +56,9 @@
   <img src="assets/contributions.png" width="100%" alt="Lo que he estado haciendo: actividad en GitHub de los últimos 12 meses. Se actualiza a diario.">
 </p>
 
-<p align="center"><img src="assets/contact.png" width="100%" alt="Contacto: ¿un proyecto, una vacante o ganas de hablar de diseño y código? Escríbeme, respondo rápido."><img src="assets/contact-marquee.svg" width="100%" alt="Cinta animada: Hablemos."></p>
+<p align="center">
+  <img src="assets/contact.svg" width="100%" alt="Contacto: ¿un proyecto, una vacante o ganas de hablar de diseño y código? Escríbeme, respondo rápido. Cinta animada: Hablemos.">
+</p>
 
 <p align="center">
   <a href="mailto:julian.jcpa@gmail.com"><img src="assets/social/mail.svg" height="40" alt="Escribir a julian.jcpa@gmail.com"></a>

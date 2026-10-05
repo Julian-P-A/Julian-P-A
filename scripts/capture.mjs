@@ -5,19 +5,19 @@
 //
 // Panels with a marquee (hero, contact) are special-cased: GitHub's README
 // doesn't run JS/CSS, so the live, screenshotted ribbon can't actually
-// scroll there. Each of those panels is split into two real files instead
-// — a static PNG screenshot for everything above the ribbon, and a real,
-// native SVG (not a screenshot) for the ribbon itself, built by
-// scripts/lib/marquee-svg.mjs. An <img src="*.svg"> is still a live SVG
-// document, so its own @keyframes genuinely animate in the README — no
-// raster step, so it's crisp at any size and a few KB instead of a
-// multi-MB GIF. README.md stacks the two images with no gap so they read
-// as one card; see the "data-capture" attributes in
-// design-system/render/render.js.
+// scroll there. Each of those panels is written as ONE combined SVG
+// instead of a plain PNG — scripts/lib/marquee-svg.mjs embeds the
+// screenshotted static part (headline, body copy) as a base64 <image>
+// inside the same document as the hand-built, animated ribbon. An
+// <img src="*.svg"> is still a live SVG document, so its own @keyframes
+// genuinely animate in the README — no raster step for the ribbon, so
+// it's crisp at any size, and it's one file/one <img> tag, not two
+// stacked images with a seam to keep aligned. See the "data-capture"
+// attributes in design-system/render/render.js.
 import puppeteer from "puppeteer";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, unlink } from "node:fs/promises";
 import { sections } from "./render-content.mjs";
-import { buildMarqueeSvg, computeTileWidth } from "./lib/marquee-svg.mjs";
+import { buildPanelSvg, computeTileWidth } from "./lib/marquee-svg.mjs";
 
 const RENDER_DIR = new URL("design-system/render/", import.meta.url);
 const ASSETS_DIR = new URL("../assets/", import.meta.url);
@@ -57,6 +57,10 @@ const SECTION_BG = {
 const HERO_SECTION = sections.find((s) => s.id === "hero");
 const MARQUEE_PX_PER_SEC = computeTileWidth(HERO_SECTION.marquee.items, HERO_SECTION.marquee.size) / 30;
 
+async function unlinkIfExists(url) {
+  await unlink(url).catch(() => {});
+}
+
 async function captureMarqueePanel(page, id, marquee) {
   const sectionBox = await (await page.$('[data-capture="section"]')).boundingBox();
   const marqueeBox = await (await page.$('[data-capture="marquee"]')).boundingBox();
@@ -66,26 +70,29 @@ async function captureMarqueePanel(page, id, marquee) {
   // the wrapper div's boundingBox() is its un-rotated flow box, but the
   // rotated content visually rises above that box's top edge by roughly
   // half-width * sin(tilt). Move the split line up by that much (+ a small
-  // margin) so the static crop doesn't cut through the rotated ribbon.
+  // margin) so the screenshot doesn't cut through the rotated ribbon.
   const splitY = marqueeBox.y - Math.abs(sectionBox.width * Math.sin((tiltDeg * Math.PI) / 180)) - 6;
+  const topHeight = splitY - sectionBox.y;
+  const stripHeight = sectionBox.y + sectionBox.height - splitY;
 
-  // Static top: everything above the ribbon, including the card's own
-  // background/border and top rounded corners. omitBackground: without it
-  // Puppeteer paints the page's "transparent" CSS background as opaque
-  // white, so the four corners outside the card's border-radius (the PNG
-  // is always a rectangle) show up as white squares — invisible on
-  // GitHub's light theme, glaring on dark.
-  await page.screenshot({
-    path: new URL(`${id}.png`, ASSETS_DIR).pathname,
-    clip: { x: sectionBox.x, y: sectionBox.y, width: sectionBox.width, height: splitY - sectionBox.y },
+  // Static top as a base64 buffer, not a file of its own — it gets
+  // embedded directly in the combined SVG below. omitBackground: without
+  // it Puppeteer paints the page's "transparent" CSS background as opaque
+  // white, so the card's top rounded corners (a screenshot is always a
+  // rectangle) would show up as white — invisible on GitHub's light
+  // theme, glaring on dark.
+  const topImageBase64 = await page.screenshot({
+    clip: { x: sectionBox.x, y: sectionBox.y, width: sectionBox.width, height: topHeight },
     omitBackground: true,
+    encoding: "base64",
   });
 
-  const stripHeight = sectionBox.y + sectionBox.height - splitY;
   const tone = TONE_COLORS[marquee.tone] || TONE_COLORS.lime;
-  const svg = buildMarqueeSvg({
+  const svg = buildPanelSvg({
     width: sectionBox.width,
-    height: stripHeight,
+    topHeight,
+    topImageBase64,
+    stripHeight,
     tilt: tiltDeg,
     cardBg: SECTION_BG[id] || SECTION_BG.hero,
     bandBg: tone.bg,
@@ -95,9 +102,12 @@ async function captureMarqueePanel(page, id, marquee) {
     fontSize: marquee.size,
     pxPerSec: MARQUEE_PX_PER_SEC,
   });
-  const svgPath = new URL(`${id}-marquee.svg`, ASSETS_DIR).pathname;
-  await writeFile(svgPath, svg, "utf8");
-  console.log(`wrote assets/${id}.png + assets/${id}-marquee.svg`);
+
+  await writeFile(new URL(`${id}.svg`, ASSETS_DIR).pathname, svg, "utf8");
+  // Stale files from the old two-file (PNG + separate ribbon SVG) layout.
+  await unlinkIfExists(new URL(`${id}.png`, ASSETS_DIR));
+  await unlinkIfExists(new URL(`${id}-marquee.svg`, ASSETS_DIR));
+  console.log(`wrote assets/${id}.svg`);
 }
 
 async function main() {
